@@ -2,17 +2,17 @@
   "C": {
     "abbr": "C",
     "color": "red",
-    "nom": "Catholique"
+    "nom": "Fraise"
   },
   "A": {
     "abbr": "A",
     "color": "darkgreen",
-    "nom": "Anglican"
+    "nom": "Poires"
   },
   "C&PL": {
     "abbr": "C&PL",
     "color": "lightgreen",
-    "nom": "Cath+Luth (Orange, Rintel)"
+    "nom": "Oranges"
   },
   "H": {
     "abbr": "H",
@@ -27,7 +27,7 @@
   "P": {
     "abbr": "P",
     "color": "blue",
-    "nom": "Protestant"
+    nom": "Protestant"
   },
   "PC": {
     "abbr": "PC",

@@ -89,19 +89,27 @@
     }
 
     .no-fill path {
-      fill : #BD906F;
+      fill : transparent;
       border : none;
+
     }
 
     #slider {
       pointer-events: auto;
     }
     #slider div , .noUi-marker{
-      color: #D4877F;
+      color: #33ccdd;
     }
     #slider .noUi-marker {
-      background: #D4877F
+      background: #33ccdd;
     }
+    #slider .noUi-handle {
+      background: #33ccdd;
+    }
+    #slider .noUi-base {
+      background: #33ccdd;
+    }
+
 
     .tooltip {
       color: #705540;
@@ -200,15 +208,30 @@
     // add zoom controls
     L.control.zoom({ position:'topright' }).addTo(map);
 
-    let url = 'http://tile.thunderforest.com/transport/{z}/{x}/{y}.png'
-    let attribution = '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+/*    let url = 'http://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png'
+    /*let url = 'http://tile.thunderforest.com/transport/{z}/{x}/{y}.png'*/
+/*    let attribution = '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+*/
+    var NASAGIBS_ModisTerraBands367CR = L.tileLayer('http://map1.vis.earthdata.nasa.gov/wmts-webmerc/MODIS_Terra_CorrectedReflectance_Bands367/default/{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.{format}', {
+    	attribution: 'Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (<a href="https://earthdata.nasa.gov">ESDIS</a>) with funding provided by NASA/HQ.',
+    	bounds: [[-85.0511287776, -179.999999975], [85.0511287776, 179.999999975]],
+    	minZoom: 1,
+    	maxZoom: 9,
+    	format: 'jpg',
+    	time: '',
+    	tilematrixset: 'GoogleMapsCompatible_Level'
+    });
 
-    const tiles = L.tileLayer(url, {
+
+
+    const tiles = NASAGIBS_ModisTerraBands367CR
+/*    L.tileLayer(url, {
         attribution: attribution,
         minZoom: 0,
       	maxZoom: 20,
       	ext: 'png'
-    })
+    })*/
+    .addTo(map)
 
 
     // create d3 map layout from leaflet
@@ -238,6 +261,7 @@
     d3.queue()
       // map created from https://geojson-maps.kyd.com.au/
       .defer(d3.json, "data/europe.geo.json")
+
       // capitals at https://www.npmjs.com/package/capitals-coordinates
       .defer(d3.json, "data/europe-capitals.geo.json")
       // name and colors for the caption
